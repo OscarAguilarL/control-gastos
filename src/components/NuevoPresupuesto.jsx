@@ -22,7 +22,6 @@ export const NuevoPresupuesto = ({
   }
 
   const handleInputChange = (e) => {
-    if (!Number(e.target.value)) return
     return setPresupuesto(Number(e.target.value))
   }
 
@@ -32,7 +31,7 @@ export const NuevoPresupuesto = ({
         <div className="campo">
           <label htmlFor="">Definir presupuesto</label>
           <input
-            type="text"
+            type="number"
             className="nuevo-presupuesto"
             placeholder="Añade tu presupuesto"
             value={presupuesto}
