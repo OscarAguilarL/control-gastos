@@ -19,7 +19,10 @@ function App() {
   }
 
   const guardarGasto = (gasto) => {
-    setGastos((prevState) => [...prevState, { id: generarId(), ...gasto }])
+    setGastos((prevState) => [
+      ...prevState,
+      { id: generarId(), fecha: Date.now(), ...gasto },
+    ])
     setAnimarModal(false)
     setTimeout(() => setModal(false), 500)
   }
