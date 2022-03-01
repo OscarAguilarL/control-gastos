@@ -55,6 +55,7 @@ export const Modal = ({
       <form
         className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}
         onSubmit={handleFormSubmit}
+        autoComplete="off"
       >
         <legend>Nuevo Gasto</legend>
 
