@@ -1,12 +1,7 @@
 import React from 'react'
+import { formatCurrency } from '../helpers/formatCurrency'
 
 export const ControlPresupuesto = ({ presupuesto }) => {
-  const formatCurrency = (cantidad) =>
-    cantidad.toLocaleString('es-MX', {
-      style: 'currency',
-      currency: 'MXN',
-    })
-
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
