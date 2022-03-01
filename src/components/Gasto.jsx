@@ -18,7 +18,7 @@ export const Gasto = ({ gasto = {} }) => {
           </p>
         </div>
       </div>
-      <p className="cantidad-gasto">{formatCurrency(Number(cantidad))}</p>
+      <p className="cantidad-gasto">{formatCurrency(cantidad)}</p>
     </div>
   )
 }

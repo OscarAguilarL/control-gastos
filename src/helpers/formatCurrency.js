@@ -1,5 +1,5 @@
 export const formatCurrency = (cantidad) =>
-  cantidad.toLocaleString('es-MX', {
+  Number(cantidad).toLocaleString('es-MX', {
     style: 'currency',
     currency: 'MXN',
   })
