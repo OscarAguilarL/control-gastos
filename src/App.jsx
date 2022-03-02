@@ -15,7 +15,7 @@ function App() {
   const handleNuevoGasto = () => {
     setModal(true)
 
-    setTimeout(() => setAnimarModal(true), 500)
+    setTimeout(() => setAnimarModal(true), 300)
   }
 
   const guardarGasto = (gasto) => {
@@ -24,11 +24,11 @@ function App() {
       { id: generarId(), fecha: Date.now(), ...gasto },
     ])
     setAnimarModal(false)
-    setTimeout(() => setModal(false), 500)
+    setTimeout(() => setModal(false), 300)
   }
 
   return (
-    <div>
+    <div className={modal ? 'fijar' : ''}>
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
