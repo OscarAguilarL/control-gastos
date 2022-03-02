@@ -10,9 +10,10 @@ export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
       (total, gasto) => gasto.cantidad + total,
       0
     )
+    const totalDisponible = presupuesto - totalGastado
 
+    setDisponible(totalDisponible)
     setGastado(totalGastado)
-    console.log(totalGastado)
   }, [gastos])
 
   return (
