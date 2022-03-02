@@ -21,7 +21,7 @@ export const Modal = ({
   const handleInputChange = ({ target }) => {
     setFormValues({
       ...formValues,
-      [target.name]: target.value,
+      [target.name]: Number(target.value) ? Number(target.value) : target.value,
     })
   }
 

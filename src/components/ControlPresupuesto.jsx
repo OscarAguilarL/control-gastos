@@ -1,7 +1,20 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { formatCurrency } from '../helpers/formatCurrency'
 
-export const ControlPresupuesto = ({ presupuesto }) => {
+export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
+  const [disponible, setDisponible] = useState(0)
+  const [gastado, setGastado] = useState(0)
+
+  useEffect(() => {
+    const totalGastado = gastos.reduce(
+      (total, gasto) => gasto.cantidad + total,
+      0
+    )
+
+    setGastado(totalGastado)
+    console.log(totalGastado)
+  }, [gastos])
+
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
@@ -14,10 +27,12 @@ export const ControlPresupuesto = ({ presupuesto }) => {
           {formatCurrency(presupuesto)}
         </p>
         <p>
-          <span>Disponible: </span>0
+          <span>Disponible: </span>
+          {formatCurrency(Number(disponible))}
         </p>
         <p>
-          <span>Gastado: </span>0
+          <span>Gastado: </span>
+          {formatCurrency(Number(gastado))}
         </p>
       </div>
     </div>
