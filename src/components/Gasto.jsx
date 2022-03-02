@@ -33,18 +33,21 @@ export const Gasto = ({ gasto = {} }) => {
   const { motivo, cantidad, categoria, id, fecha } = gasto
   const fechaFormat = formatearFecha(fecha)
 
-  const leadingActions = () => {
-    console.log('editar...')
-  }
-  const trailingActions = () => {
-    console.log('eliminar')
-  }
-
+  const leadingActions = () => (
+    <LeadingActions>
+      <SwipeAction onClick={() => console.log('editar')}>Editar</SwipeAction>
+    </LeadingActions>
+  )
+  const trailingActions = () => (
+    <TrailingActions>
+      <SwipeAction onClick={() => console.log('eliminar')}>Eliminar</SwipeAction>
+    </TrailingActions>
+  )
   return (
     <SwipeableList>
       <SwipeableListItem
-        leadingActions={leadingActions}
-        trailingActions={trailingActions}
+        leadingActions={leadingActions()}
+        trailingActions={trailingActions()}
       >
         <div className="gasto sombra">
           <div className="contenido-gasto">
