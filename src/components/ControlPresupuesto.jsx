@@ -8,6 +8,7 @@ import { formatCurrency } from '../helpers/formatCurrency'
 export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
   const [disponible, setDisponible] = useState(0)
   const [gastado, setGastado] = useState(0)
+  const [porcentaje, setPorcentaje] = useState(0)
 
   useEffect(() => {
     const totalGastado = gastos.reduce(
@@ -16,16 +17,23 @@ export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
     )
     const totalDisponible = presupuesto - totalGastado
 
+    // calcular el porcentaje gastado
+    const nuevoPorcentaje = (
+      ((presupuesto - totalDisponible) / presupuesto) *
+      100
+    ).toFixed(2)
+
     setDisponible(totalDisponible)
     setGastado(totalGastado)
+    setTimeout(() => {
+      setPorcentaje(nuevoPorcentaje)
+    }, 1000)
   }, [gastos])
 
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
-        <CircularProgressbar
-          value={50}
-        />
+        <CircularProgressbar value={porcentaje} />
       </div>
 
       <div className="contenido-presupuesto">
