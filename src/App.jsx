@@ -36,9 +36,10 @@ function App() {
       setGastos(gastosActualizados)
     } else {
       // nuevo gasto
-      gasto.id = generarId()
-      gasto.fecha = Date.now()
-      setGastos((prevState) => [...prevState, gasto])
+      setGastos((prevState) => [
+        ...prevState,
+        { ...gasto, id: generarId(), fecha: Date.now() },
+      ])
     }
 
     setAnimarModal(false)
