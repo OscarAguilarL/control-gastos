@@ -29,7 +29,7 @@ const iconosDict = {
   suscripciones: IconoSuscripciones,
 }
 
-export const Gasto = ({ gasto, setGastoEditar }) => {
+export const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
   const { motivo, cantidad, categoria, id, fecha } = gasto
   const fechaFormat = formatearFecha(fecha)
 
@@ -38,9 +38,13 @@ export const Gasto = ({ gasto, setGastoEditar }) => {
       <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar</SwipeAction>
     </LeadingActions>
   )
+
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log('eliminar')}>
+      <SwipeAction
+        onClick={() => eliminarGasto(gasto.id)}
+        destructive
+      >
         Eliminar
       </SwipeAction>
     </TrailingActions>
