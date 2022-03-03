@@ -4,7 +4,7 @@ export const Filtros = ({ filtro, setFiltro }) => {
   return (
     <div className="filtros sombra contenedor">
       <form>
-        <div className="campo">
+        <div className="campo direction-column">
           <label htmlFor="gastos">Filtrar gastos</label>
           <select
             name="gastos"
