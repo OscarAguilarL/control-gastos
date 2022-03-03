@@ -10,7 +10,7 @@ export const Header = ({
 }) => {
   return (
     <header>
-      <h1>Planificador de gastos</h1>
+      <h1>Control de presupuesto</h1>
       {isPresupuestoValid ? (
         <ControlPresupuesto presupuesto={presupuesto} gastos={gastos} />
       ) : (
