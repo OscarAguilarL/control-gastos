@@ -12,7 +12,7 @@ export const Filtros = ({ filtro, setFiltro }) => {
             value={filtro}
             onChange={(e) => setFiltro(e.target.value)}
           >
-            <option value="">-- Seleccione una opción --</option>
+            <option value="">-- TODAS LAS CATEGORIAS --</option>
             <option value="ahorro">Ahorro</option>
             <option value="comida">Comida</option>
             <option value="casa">Casa</option>
