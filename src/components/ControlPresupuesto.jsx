@@ -5,7 +5,13 @@ import 'react-circular-progressbar/dist/styles.css'
 
 import { formatCurrency } from '../helpers/formatCurrency'
 
-export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
+export const ControlPresupuesto = ({
+  presupuesto,
+  gastos = [],
+  setGastos,
+  setPresupuesto,
+  setIsPresupuestoValid,
+}) => {
   const [disponible, setDisponible] = useState(0)
   const [gastado, setGastado] = useState(0)
   const [porcentaje, setPorcentaje] = useState(0)
@@ -29,6 +35,15 @@ export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
       setPorcentaje(nuevoPorcentaje)
     }, 1000)
   }, [gastos])
+
+  const handleResetApp = () => {
+    const resultado = confirm('¿Deseas reiniciar tu presupuesto y gastos?')
+    if (resultado) {
+      setGastos([])
+      setPresupuesto(0)
+      setIsPresupuestoValid(false)
+    }
+  }
 
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
@@ -57,6 +72,9 @@ export const ControlPresupuesto = ({ presupuesto, gastos = [] }) => {
           <span>Gastado: </span>
           {formatCurrency(Number(gastado))}
         </p>
+        <button className="reset-app" type="button" onClick={handleResetApp}>
+          Resetear aplicación
+        </button>
       </div>
     </div>
   )
