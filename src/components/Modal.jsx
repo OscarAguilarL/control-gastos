@@ -16,11 +16,19 @@ export const Modal = ({
     cantidad: 0,
     categoria: '',
   })
+  const [fecha, setFecha] = useState('')
+  const [id, setId] = useState('')
   const { motivo, cantidad, categoria } = formValues
 
   useEffect(() => {
     if (Object.keys(gastoEditar).length > 0) {
-      setFormValues({ ...gastoEditar })
+      setFormValues({
+        motivo: gastoEditar.motivo,
+        cantidad: gastoEditar.cantidad,
+        categoria: gastoEditar.categoria,
+      })
+      setId(gastoEditar.id)
+      setFecha(gastoEditar.fecha)
     }
   }, [])
 
@@ -49,7 +57,7 @@ export const Modal = ({
       return
     }
 
-    guardarGasto({ motivo, cantidad, categoria })
+    guardarGasto({ motivo, cantidad, categoria, id, fecha })
   }
 
   return (
@@ -63,7 +71,7 @@ export const Modal = ({
         onSubmit={handleFormSubmit}
         autoComplete="off"
       >
-        <legend>Nuevo Gasto</legend>
+        <legend>{gastoEditar.motivo ? 'Editar gasto' : 'Nuevo Gasto'}</legend>
 
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
 
@@ -108,7 +116,10 @@ export const Modal = ({
           </select>
         </div>
 
-        <input type="submit" value="Añadir gasto" />
+        <input
+          type="submit"
+          value={gastoEditar.motivo ? 'Guardar cambios' : 'Añadir gasto'}
+        />
       </form>
     </div>
   )
