@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Mensaje } from './Mensaje'
 
 import cerrarBtn from '../img/cerrar.svg'
@@ -8,6 +8,7 @@ export const Modal = ({
   animarModal,
   setAnimarModal,
   guardarGasto,
+  gastoEditar,
 }) => {
   const [mensaje, setMensaje] = useState('')
   const [formValues, setFormValues] = useState({
@@ -15,8 +16,13 @@ export const Modal = ({
     cantidad: 0,
     categoria: '',
   })
-
   const { motivo, cantidad, categoria } = formValues
+
+  useEffect(() => {
+    if (Object.keys(gastoEditar).length > 0) {
+      setFormValues({ ...gastoEditar })
+    }
+  }, [])
 
   const handleInputChange = ({ target }) => {
     setFormValues({
